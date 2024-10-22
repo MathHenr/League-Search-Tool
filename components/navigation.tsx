@@ -54,7 +54,7 @@ export const Navigation = () => {
 
     if (isMobile) {
         return (
-            <div className="ml-4">
+            <div className="flex items-center justify-end ml-4">
                 <Sheet open={isOpen} onOpenChange={setIsOpen}>
                     <SheetTrigger>
                         <Button

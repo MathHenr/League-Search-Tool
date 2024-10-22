@@ -12,10 +12,10 @@ const Header = () => {
                 <div className="size-full grid grid-cols-3">
                     <div className="h-full flex items-center justify-start col-span-2">
                         <LeagueLogo />
-                        <HeaderLogo/>
-                        <Navigation/>
+                        <HeaderLogo />
+                        <Navigation />
                     </div>
-                    <div className="h-full grid items-center col-span-1">
+                    <div className="grid h-full items-center lg:col-span-1">
                         <LoginButton />
                     </div>
                 </div>

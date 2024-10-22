@@ -32,7 +32,7 @@ export const LoginButton = () => {
                 </div>
             )}
             {!user && (
-                <div className="hidden lg:flex items-center justify-end lg:mr-0 mr-2">
+                <div className="flex items-center justify-end lg:mr-0 mr-2">
                     <NavButton 
                         key={redirectUser.href}
                         href={redirectUser.href}
