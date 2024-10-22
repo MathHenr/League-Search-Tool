@@ -52,7 +52,8 @@ const config: Config = {
   			}
   		},
   		backgroundImage: {
-  			League: 'url("https://www.riotgames.com/darkroom/1440/a4e88f6b04bf83f1c417e87292b85606:b62ff9b783f3dd26a6321e1440efe13b/riot-games-the-team-behind-worlds-2022-esports-broadcast-league-of-legends.png")'
+			crowd: 'url("https://www.riotgames.com/darkroom/1440/a4e88f6b04bf83f1c417e87292b85606:b62ff9b783f3dd26a6321e1440efe13b/riot-games-the-team-behind-worlds-2022-esports-broadcast-league-of-legends.png")',
+			game: 'url("/header.png")',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

@@ -1,24 +1,25 @@
 import { Navigation } from "@/components/navigation"
 import { HeaderLogo } from "@/components/header-logo"
-import { SearchBar } from "@/components/search-bar"
 import { LoginButton } from "@/components/user-login"
+import { LeagueLogo } from "@/components/league-logo"
+import { AboutMsg } from "@/components/about-msg"
 
 const Header = () => {
     return (
-        <header className="bg-[#C1D1DE] h-20 px-4 lg:px-4 shadow-sm">
-            <div className="max-w-screen-2xl mx-auto h-full">
-                <div className="h-full flex items-center justify-between lg:gap-x-0 gap-x-2">
-                    <div className="h-full flex items-center justify-center gap-x-3">
-                        <HeaderLogo />
-                        <Navigation />
+        <header className="h-20 px-4 pb-[400px] bg-game bg-cover bg-center bg-no-repeat text-white">
+            <div className="max-w-screen-2xl mx-auto h-20"
+            >
+                <div className="size-full grid grid-cols-3">
+                    <div className="h-full flex items-center justify-start col-span-2">
+                        <LeagueLogo />
+                        <HeaderLogo/>
+                        <Navigation/>
                     </div>
-                    <div className="xl:w-1/3 lg:w-1/4 w-3/4 h-10 bg-white flex lg:items-center justify-start px-2 py-px rounded-xl">
-                        <SearchBar />
-                    </div>
-                    <div className="flex items-center justify-end">
+                    <div className="h-full grid items-center col-span-1">
                         <LoginButton />
                     </div>
                 </div>
+                <AboutMsg/>
             </div>
         </header>
     )

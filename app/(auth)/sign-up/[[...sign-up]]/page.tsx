@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <div className="absolute min-h-screen inset-0">
       <div className="min-h-screen grid grid-cols-1 lg:grid-cols-3">
-        <div className="lg:hidden min-h-screen w-full absolute bg-League bg-center bg-cover blur-md -z-10" />
+        <div className="lg:hidden min-h-screen w-full absolute bg-crowd bg-center bg-cover blur-md -z-10" />
         <div className="h-full lg:flex flex-col items-center justify-center px-4">
           <div className="flex items-center justify-center pt-12">
             <Image src="/logo.svg" alt="Logo" height={100} width={100}/>
@@ -21,7 +21,7 @@ export default function Page() {
           </div>
         </div>
         
-        <div className="min-h-screen bg-League bg-cover bg-center hidden lg:grid lg:col-span-2" />
+        <div className="min-h-screen bg-crowd bg-cover bg-center hidden lg:grid lg:col-span-2" />
         
       </div>
 

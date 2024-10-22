@@ -1,12 +1,17 @@
 "use client"
 
-import { useUser } from "@clerk/nextjs"
 import Link from "next/link"
 
+import { useUser } from "@clerk/nextjs"
 import { UserButton, ClerkLoaded, ClerkLoading } from "@clerk/nextjs"
-import { Loader2 } from "lucide-react"
+import { Loader2, Settings } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import { NavButton } from "@/components/nav-button"
+
+const redirectUser = {
+    href: "/sign-in",
+    label: "Account",
+}
 
 export const LoginButton = () => {
     const { user } = useUser()
@@ -14,9 +19,12 @@ export const LoginButton = () => {
     return (
         <>
             {user && (
-                <div>
+                <div className="flex items-center justify-end lg:mr-0 mr-2">
                     <ClerkLoaded>
                         <UserButton userProfileMode="modal"/>
+                        <Link href="/">
+                            <Settings className="size-5 mx-2" />
+                        </Link>
                     </ClerkLoaded>
                     <ClerkLoading>
                         <Loader2 className="size-8 animate-spin text-slate-900"/>
@@ -24,17 +32,13 @@ export const LoginButton = () => {
                 </div>
             )}
             {!user && (
-                <div className="flex lg:flex-row flex-col items-center justify-center lg:gap-x-2 gap-x-0">
-                    <Link href="/sign-in">
-                        <Button className="focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none bg-transparent text-black font-semibold lg:text-sm text-xs hover:bg-gradient-to-l from-[#0047C9] via-[#0055D2] to-[#0068DE] hover:text-white transition">
-                            Login
-                        </Button>
-                    </Link>
-                    <Link href="/sign-up">
-                        <Button className="hidden lg:flex focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none bg-transparent text-black font-semibold lg:text-sm text-xs hover:bg-gradient-to-l from-[#0047C9] via-[#0055D2] to-[#0068DE] hover:text-white transition">
-                            Sign Up
-                        </Button>
-                    </Link>
+                <div className="hidden lg:flex items-center justify-end lg:mr-0 mr-2">
+                    <NavButton 
+                        key={redirectUser.href}
+                        href={redirectUser.href}
+                        label={redirectUser.label}
+                        isSettings={true}
+                    />
                 </div>
             )}
         </>
