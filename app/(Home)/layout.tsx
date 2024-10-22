@@ -1,4 +1,5 @@
 import Header from "@/components/header"
+import { SearchBar } from "@/components/search-bar"
 
 interface Props {
     children: React.ReactNode
@@ -7,8 +8,9 @@ interface Props {
 const HomepageLayout = ({ children }: Props) => {
     return (
         <>
-            <Header />
-            <main>
+            <main className="min-h-screen bg-[#242430] text-white">
+                <Header />
+                <SearchBar />
                 {children}
             </main>
         </>

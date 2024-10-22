@@ -3,6 +3,7 @@ import { HeaderLogo } from "@/components/header-logo"
 import { LoginButton } from "@/components/user-login"
 import { LeagueLogo } from "@/components/league-logo"
 import { AboutMsg } from "@/components/about-msg"
+import { SearchBar } from "./search-bar"
 
 const Header = () => {
     return (
@@ -19,7 +20,7 @@ const Header = () => {
                         <LoginButton />
                     </div>
                 </div>
-                <AboutMsg/>
+                <AboutMsg />
             </div>
         </header>
     )
