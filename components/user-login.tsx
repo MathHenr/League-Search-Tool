@@ -1,6 +1,6 @@
 "use client"
 
-import { SignOutButton, useUser } from "@clerk/nextjs"
+import { useUser } from "@clerk/nextjs"
 import Link from "next/link"
 
 import { UserButton, ClerkLoaded, ClerkLoading } from "@clerk/nextjs"
@@ -24,14 +24,14 @@ export const LoginButton = () => {
                 </div>
             )}
             {!user && (
-                <div className="flex items-center justify-center gap-x-2">
+                <div className="flex lg:flex-row flex-col items-center justify-center lg:gap-x-2 gap-x-0">
                     <Link href="/sign-in">
-                        <Button className="focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none bg-transparent text-black font-semibold text-sm hover:bg-gradient-to-l from-[#0047C9] via-[#0055D2] to-[#0068DE] hover:text-white transition">
+                        <Button className="focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none bg-transparent text-black font-semibold lg:text-sm text-xs hover:bg-gradient-to-l from-[#0047C9] via-[#0055D2] to-[#0068DE] hover:text-white transition">
                             Login
                         </Button>
                     </Link>
                     <Link href="/sign-up">
-                        <Button className="focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none bg-transparent text-black font-semibold text-sm hover:bg-gradient-to-l from-[#0047C9] via-[#0055D2] to-[#0068DE] hover:text-white transition">
+                        <Button className="hidden lg:flex focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none bg-transparent text-black font-semibold lg:text-sm text-xs hover:bg-gradient-to-l from-[#0047C9] via-[#0055D2] to-[#0068DE] hover:text-white transition">
                             Sign Up
                         </Button>
                     </Link>

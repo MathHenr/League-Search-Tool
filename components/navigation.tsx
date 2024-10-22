@@ -15,7 +15,6 @@ import {
     SheetClose
 } from "@/components/ui/sheet"
 import { MenuHeaderLogo } from "@/components/menu-header-logo"
-import { LoginButton } from "@/components/user-login"
 
 
 const routes = [
@@ -64,7 +63,7 @@ export const Navigation = () => {
                 <SheetContent side="left">
                     <div className="min-h-screen w-full flex flex-col items-center justify-start">
                         <MenuHeaderLogo />
-                        <nav className="w-full flex flex-col items-center justify-center gap-y-2 mt-14">
+                        <nav className="min-h-screen w-full flex flex-col items-center justify-start gap-y-2 mt-14">
                             {routes.map((route) => (
                                 <Button
                                     key={route.href}
@@ -75,13 +74,8 @@ export const Navigation = () => {
                                     {route.label}
                                 </Button>
                             ))}
-                            
                         </nav>
-                        <div className="fixed bottom-20">
-                            <LoginButton />  
-                        </div>
                     </div>
-
                 </SheetContent>
             </Sheet>
         )
