@@ -3,5 +3,5 @@
 import { redirect } from "next/navigation"
 
 export async function navigate(data: FormData) {
-    redirect(`search?${data.get('search')}`)
+    redirect(`search/${data.get('search')}`)
 }
