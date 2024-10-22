@@ -9,7 +9,7 @@ export default function Page() {
       <div className="min-h-screen grid grid-cols-1 lg:grid-cols-3">
         <div className="lg:hidden min-h-screen w-full absolute bg-crowd bg-center bg-cover blur-md -z-10" />
         <div className="h-full lg:flex flex-col items-center justify-center px-4">
-          <div className="flex items-center justify-center pt-12">
+          <div className="flex items-center justify-center pt-12 drop-shadow-md">
             <Image src="/logo.svg" alt="Logo" height={100} width={100}/>
           </div>
           <div className="text-center space-y-2 py-4 z-10">
