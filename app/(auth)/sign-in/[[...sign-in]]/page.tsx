@@ -13,7 +13,7 @@ export default function Page() {
             <Image src="/logo.svg" alt="Logo" height={100} width={100}/>
           </div>
           <div className="text-center space-y-2 py-4 z-10">
-            <h2 className="lg:bg-gradient-to-l from-[#FF0D09] via-[#FF4A31] to-[#FF704A] lg:inline-block lg:text-transparent lg:bg-clip-text text-3xl font-semibold text-white">Welcome Back</h2>
+            <h2 className="lg:bg-gradient-to-l from-[#0047C9] via-[#0055D2] to-[#0068DE] lg:inline-block lg:text-transparent lg:bg-clip-text text-3xl font-semibold text-white">Welcome Back</h2>
             <p className="text-base font-normal lg:text-slate-600 text-white">Look up info on the League of Legends competitive scene.</p>
           </div>
           <div className="flex items-center justify-center">
@@ -25,9 +25,7 @@ export default function Page() {
         
       </div>
 
-      <div className="flex w-full h-16 bg-gradient-to-l from-[#FF0D09] via-[#FF4A31] to-[#FF704A] overflow-hidden">
-        <Footer/>
-      </div>
+      <Footer/>
     </div>
   )
 }
