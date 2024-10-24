@@ -3,7 +3,7 @@
 const token = process.env.ACCESS_TOKEN
 const apiURL = "https://api.pandascore.co/lol"
 
-type listChampionsRoute = {
+export type ChampionAtributes = {
     armor: number
     armorperlevel: number
     attackdamage: number
@@ -32,14 +32,14 @@ type listChampionsRoute = {
 }
 
 // picking 'id','name' and 'image_url' from list all champions 
-export type BasicChampionInfo = Pick<listChampionsRoute, 'id'|'name'|'image_url'>
+export type BasicChampionInfo = Pick<ChampionAtributes, 'id'|'name'|'image_url'>
 
 
 
-const fetchChampionsData = async (
+export const fetchChampionsData = async (
     query: string | string[]
 ) => {
-    const searchURL = `${apiURL}/champions?search[name]=${query}`
+    const searchURL = `${apiURL}/champions/${query}`
     try {
         const response = await fetch(searchURL, {
             method: "GET",
@@ -123,7 +123,7 @@ export const getListChampions = async (page:number): Promise<BasicChampionInfo[]
             throw new Error(`Failed to fetch: ${response.status} error on ${response.statusText}`)
         }
 
-        const value: [listChampionsRoute] = await response.json()
+        const value: [ChampionAtributes] = await response.json()
         const data = simplifyJson(value)
         return data
     } catch (error) {
@@ -131,7 +131,7 @@ export const getListChampions = async (page:number): Promise<BasicChampionInfo[]
     }
 }
 
-const simplifyJson = (data: [listChampionsRoute]): BasicChampionInfo[] => {
+const simplifyJson = (data: [ChampionAtributes]): BasicChampionInfo[] => {
     const jsonSimplify: BasicChampionInfo[] = []
     for (let i = 0; i < data.length ; i++) {
         const id = data[i].id

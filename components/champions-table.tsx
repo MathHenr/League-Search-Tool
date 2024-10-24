@@ -2,19 +2,13 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { Loader2 } from "lucide-react"
 
-import {
-    Tooltip,
-    TooltipProvider,
-    TooltipTrigger,
-    TooltipContent
-} from "@/components/ui/tooltip"
-import { cn } from "@/lib/utils"
+
 import { Button } from "@/components/ui/button"
 import { getListChampions, BasicChampionInfo } from "@/app/api/[[...route]]/fetch-search-data"
 import H1 from "@/components/html/h1"
+import { ChampionsBox } from "@/components/champion-box"
 
 export const ChampionsTable = () => {
     const [champions, setChampions] = useState<BasicChampionInfo[]>()
@@ -30,16 +24,14 @@ export const ChampionsTable = () => {
                 throw new Error("Failed getting data")
             }
             setIsLoading(false)
-            setFadeIn(false)
+            const timeout = setTimeout(() => {
+                setFadeIn(false)
+            }, 25)
             setChampions(data as BasicChampionInfo[])
-            return
+            return () => clearTimeout(timeout)
         }
         updateData(page)
     }, [page])
-    
-    function changeState () {
-        return setFadeIn(false)
-    }
     
     return (
         <div className="min-h-full grid lg:col-span-2 lg:row-span-2">
@@ -62,28 +54,13 @@ export const ChampionsTable = () => {
                     {champions && (
                         champions.map((champion) => {
                             return (
-                                <TooltipProvider
+                                <ChampionsBox
                                     key={champion.id}
-                                >
-                                    
-                                    <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <div 
-                                                className={cn("lg:w-32 min-w-20 lg:h-full h-1/2 p-2 flex flex-col items-center justify-center bg-[#312e35] shadow-sm hover:cursor-pointer hover:scale-110 ease-out transition-transform duration-100",
-                                                    fadeIn ? "translate-x-2 opacity-0" : "translate-x-0 opacity-1",
-                                                )}
-                                            >
-                                                <Image height={100} width={100} src={champion.image_url} alt={champion.name} />
-                                            </div>
-                                        </TooltipTrigger>
-                                        <TooltipContent
-                                            className="rounded-none bg-[#ccc256] border-[#f1dd87] border text-[#6c4e3b] lg:font-semibold font-normal"
-                                            side="bottom"
-                                        >
-                                            <p>{champion.name}</p>
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </TooltipProvider>
+                                    id={champion.id}
+                                    name={champion.name}
+                                    image_url={champion.image_url}
+                                    fadeIn={fadeIn}
+                                />
                             )
                         })
                     )}
