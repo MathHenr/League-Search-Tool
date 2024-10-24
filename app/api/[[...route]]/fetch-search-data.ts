@@ -108,8 +108,8 @@ const fetchLeaguesData = async (
     }
 }
 
-export const getListChampions = async (): Promise<BasicChampionInfo[]> => {
-    const url = `${apiURL}/champions?page[size]=20`
+export const getListChampions = async (page:number): Promise<BasicChampionInfo[]> => {
+    const url = `${apiURL}/champions?page=${page}`
     try {
         const response = await fetch(url, {
             method: "GET",

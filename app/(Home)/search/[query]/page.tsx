@@ -16,7 +16,7 @@ export default function SearchQuery () {
     // }
     
     return(
-        <div>
+        <div className="max-w-screen-2xl mx-auto min-h-screen">
             {searchedParams && (
                 <div className="p-2 mx-4">
                     <p>You&apos;ve searched for: <strong>{searchedParams.replace(/%20/g, " ")}</strong></p>

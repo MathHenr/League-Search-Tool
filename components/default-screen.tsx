@@ -2,7 +2,7 @@ import { ChampionsTable } from "@/components/champions-table"
 
 const DefaultScreen = () => {
     return (
-        <section className="max-w-screen-2xl xl:mx-auto mx-4 p-4 min-h-[600px] grid grid-cols-1 grid-rows-3 lg:grid-cols-3">
+        <section className="max-w-screen-2xl xl:mx-auto mx-4 p-4 grid grid-cols-1 grid-rows-3 lg:grid-cols-3 bg-slate-800 shadow-md">
             {/* champions content */}
             <ChampionsTable />
             {/* players content */}
