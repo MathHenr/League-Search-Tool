@@ -111,3 +111,4 @@ export const fetchSearchData = async (
         throw new Error(`Error: ${error}`)
     }
 }
+// trying to optmize this function
