@@ -1,5 +1,6 @@
 import Header from "@/components/header"
 import { SearchBar } from "@/components/search-bar"
+import DefaultScreen from "@/components/default-screen"
 
 interface Props {
     children: React.ReactNode
