@@ -3,6 +3,8 @@
 const token = process.env.ACCESS_TOKEN
 const apiURL = "https://api.pandascore.co/lol"
 
+
+
 const fetchChampionsData = async (
     query: string | string[]
 ) => {
@@ -75,13 +77,39 @@ const fetchLeaguesData = async (
     }
 }
 
+export const getListChampions = async (): Promise<object> => {
+    const url = `${apiURL}/champions`
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            }
+        })
+    
+        if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.status} error on ${response.statusText}`)
+        }
+
+        const data = response.json()
+        return data
+    } catch (error) {
+        throw new Error(`Error: ${error}`)
+    }
+}
+
 export const fetchSearchData = async (
     query: string | string[]
 ) => {
-    const championsData = await fetchChampionsData(query)
-    const playersData = await fetchPlayersData(query)
-    const leaguesData = await fetchLeaguesData(query)
+    try {
+        const championsData = await fetchChampionsData(query)
+        const playersData = await fetchPlayersData(query)
+        const leaguesData = await fetchLeaguesData(query)
 
-    const data = [championsData, playersData, leaguesData] 
-    return data
+        const data = [championsData, playersData, leaguesData] 
+        return data
+    } catch (error) {
+        return console.log(error)
+    }
 }

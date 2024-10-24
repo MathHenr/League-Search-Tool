@@ -23,7 +23,6 @@ export default function SearchQuery () {
                     <div className="w-full border-b border-slate-100" />
                 </div>
             )}
-            {/* initial commit of the branch default screen */}
             <DefaultScreen />
         </div>
     )
