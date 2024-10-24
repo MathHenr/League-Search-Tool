@@ -3,8 +3,6 @@
 const token = process.env.ACCESS_TOKEN
 const apiURL = "https://api.pandascore.co/lol"
 
-
-
 const fetchChampionsData = async (
     query: string | string[]
 ) => {
@@ -78,7 +76,7 @@ const fetchLeaguesData = async (
 }
 
 export const getListChampions = async (): Promise<object> => {
-    const url = `${apiURL}/champions`
+    const url = `${apiURL}/champions?page[size]=20`
     try {
         const response = await fetch(url, {
             method: "GET",
@@ -110,6 +108,6 @@ export const fetchSearchData = async (
         const data = [championsData, playersData, leaguesData] 
         return data
     } catch (error) {
-        return console.log(error)
+        throw new Error(`Error: ${error}`)
     }
 }
