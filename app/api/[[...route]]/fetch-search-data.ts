@@ -3,6 +3,39 @@
 const token = process.env.ACCESS_TOKEN
 const apiURL = "https://api.pandascore.co/lol"
 
+type listChampionsRoute = {
+    armor: number
+    armorperlevel: number
+    attackdamage: number
+    attackdamageperlevel: number
+    attackrange: number
+    attackspeedoffset: null | number
+    attackspeedperlevel: number
+    big_image_url: string
+    crit: number
+    critperlevel: number
+    hp: number
+    hpperlevel: number
+    hpregen: number
+    hpregenperlevel: number
+    id: number
+    image_url: string
+    movespeed: number
+    mp: number
+    mpperlevel: number
+    mpregen: number
+    mpregenperlevel: number
+    name: string
+    spellblock: number
+    spellblockperlevel: number
+    videogame_versions: [number]
+}
+
+// picking 'id','name' and 'image_url' from list all champions 
+export type BasicChampionInfo = Pick<listChampionsRoute, 'id'|'name'|'image_url'>
+
+
+
 const fetchChampionsData = async (
     query: string | string[]
 ) => {
@@ -75,7 +108,7 @@ const fetchLeaguesData = async (
     }
 }
 
-export const getListChampions = async (): Promise<object> => {
+export const getListChampions = async (): Promise<BasicChampionInfo[]> => {
     const url = `${apiURL}/champions?page[size]=20`
     try {
         const response = await fetch(url, {
@@ -90,12 +123,29 @@ export const getListChampions = async (): Promise<object> => {
             throw new Error(`Failed to fetch: ${response.status} error on ${response.statusText}`)
         }
 
-        const data = response.json()
+        const value: [listChampionsRoute] = await response.json()
+        const data = simplifyJson(value)
         return data
     } catch (error) {
         throw new Error(`Error: ${error}`)
     }
 }
+
+const simplifyJson = (data: [listChampionsRoute]): BasicChampionInfo[] => {
+    const jsonSimplify: BasicChampionInfo[] = []
+    for (let i = 0; i < data.length ; i++) {
+        const id = data[i].id
+        const name = data[i].name
+        const image_url = data[i].image_url
+        jsonSimplify.push({
+            'id': id,
+            'name': name,
+            'image_url': image_url,
+        })
+    }
+    return jsonSimplify
+}
+
 
 export const fetchSearchData = async (
     query: string | string[]

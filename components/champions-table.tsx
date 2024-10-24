@@ -11,16 +11,11 @@ import {
     TooltipTrigger,
     TooltipContent
 } from "@/components/ui/tooltip"
-import { getListChampions } from "@/app/api/[[...route]]/fetch-search-data"
+import { getListChampions, BasicChampionInfo } from "@/app/api/[[...route]]/fetch-search-data"
 import H1 from "@/components/html/h1"
 
-type ChampionsType = {
-    name: string
-    image_url: string
-}
-
 export const ChampionsTable = () => {
-    const [champions, setChampions] = useState<[ChampionsType]>()
+    const [champions, setChampions] = useState<BasicChampionInfo[]>()
     const [isLoading, setIsLoading] = useState<boolean>(true)
 
     useEffect(() => {
@@ -28,7 +23,7 @@ export const ChampionsTable = () => {
             const data = await getListChampions()
             console.log(data)
             if (data) setIsLoading(false)
-            return setChampions(data as [ChampionsType])
+            return setChampions(data as BasicChampionInfo[])
         }
         updateData()
     }, [])
@@ -53,7 +48,7 @@ export const ChampionsTable = () => {
                     champions.map((champion) => {
                         return (
                             <TooltipProvider
-                                key={champion.name}
+                                key={champion.id}
                             >
                                 <Tooltip>
                                     <TooltipTrigger asChild>
