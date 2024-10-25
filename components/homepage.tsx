@@ -1,6 +1,6 @@
-import { ChampionsTable } from "@/components/champions-table"
+import { ChampionsTable } from "@/components/champions/champions-table"
 
-const DefaultScreen = () => {
+const HomePage = () => {
     return (
         <section className="max-w-screen-2xl xl:mx-auto mx-4 p-4 grid grid-cols-1 grid-rows-3 lg:grid-cols-3 bg-slate-800 shadow-md">
             {/* champions content */}
@@ -17,4 +17,4 @@ const DefaultScreen = () => {
     )
 }
 
-export default DefaultScreen
+export default HomePage

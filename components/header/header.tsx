@@ -1,9 +1,8 @@
-import { Navigation } from "@/components/navigation"
-import { HeaderLogo } from "@/components/header-logo"
-import { LoginButton } from "@/components/user-login"
-import { LeagueLogo } from "@/components/league-logo"
-import { AboutMsg } from "@/components/about-msg"
-import { SearchBar } from "./search-bar"
+import { Navigation } from "@/components/header/navigation"
+import { HeaderLogo } from "@/components/header/header-logo"
+import { LoginButton } from "@/components/header/user-login"
+import { LeagueLogo } from "@/components/header/league-logo"
+import { AboutMsg } from "@/components/header/about-msg"
 
 const Header = () => {
     return (

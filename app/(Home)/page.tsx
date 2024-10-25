@@ -1,7 +1,7 @@
-import DefaultScreen from "@/components/default-screen"
+import HomePage from "@/components/homepage"
 
 export default function Home() {
     return (
-        <DefaultScreen/>
+        <HomePage/>
     );
 }

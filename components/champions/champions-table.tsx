@@ -1,14 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import { Loader2 } from "lucide-react"
 
 
 import { Button } from "@/components/ui/button"
 import { getListChampions, BasicChampionInfo } from "@/app/api/[[...route]]/fetch-search-data"
-import H1 from "@/components/html/h1"
-import { ChampionsBox } from "@/components/champion-box"
+import { ChampionsBox } from "@/components/champions/champion-box"
+import { SectionTitle } from "@/components/section-title"
 
 export const ChampionsTable = () => {
     const [champions, setChampions] = useState<BasicChampionInfo[]>()
@@ -35,11 +34,9 @@ export const ChampionsTable = () => {
     
     return (
         <div className="min-h-full grid lg:col-span-2 lg:row-span-2">
-            <div className="w-full pb-3">
-                <Link href="/champions">
-                    <H1>Champions</H1>
-                </Link>
-            </div>
+            <SectionTitle>
+                Champions
+            </SectionTitle>
 
             <div className="w-full lg:min-h-[620px] h-full flex flex-col justify-between">
                 {/* champions icons */}

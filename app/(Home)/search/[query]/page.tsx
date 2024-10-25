@@ -4,7 +4,7 @@ import { useParams } from "next/navigation"
 
 import { fetchSearchData } from "@/app/api/[[...route]]/fetch-search-data"
 
-import DefaultScreen from "@/components/default-screen"
+import DefaultScreen from "@/components/homepage"
 
 export default function SearchQuery () {
     const params = useParams()

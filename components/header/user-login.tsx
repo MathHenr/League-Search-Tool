@@ -6,7 +6,7 @@ import { useUser } from "@clerk/nextjs"
 import { UserButton, ClerkLoaded, ClerkLoading } from "@clerk/nextjs"
 import { Loader2, Settings } from "lucide-react"
 
-import { NavButton } from "@/components/nav-button"
+import { NavButton } from "@/components/header/nav-button"
 
 const redirectUser = {
     href: "/sign-in",

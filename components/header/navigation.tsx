@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { useMedia } from "react-use"
 import { Menu } from "lucide-react"
 
-import { NavButton } from "@/components/nav-button"
+import { NavButton } from "@/components/header/nav-button"
 import { Button } from "@/components/ui/button"
 import {
     Sheet,
@@ -14,7 +14,7 @@ import {
     SheetContent,
     SheetClose
 } from "@/components/ui/sheet"
-import { MenuHeaderLogo } from "@/components/menu-header-logo"
+import { MenuHeaderLogo } from "@/components/header/menu-header-logo"
 
 
 const routes = [

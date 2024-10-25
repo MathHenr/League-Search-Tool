@@ -59,5 +59,5 @@ Bem-vindo ao **League Search Tool**, uma ferramenta criada, primeiramente, para 
 📄 Licença
 Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-**Todos os direitos reservados a Riot Games**
-**Dados coletados de PandaScore API**
+ - **Todos os direitos reservados a Riot Games**
+ - **Dados coletados de PandaScore API**
