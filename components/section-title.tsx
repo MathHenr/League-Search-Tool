@@ -1,7 +1,7 @@
 import { ComponentProps } from "react"
 import Link from "next/link"
 
-import H1 from "@/components/html/h1"
+import H1 from "@/components/h1"
 
 interface SectionTitleProps extends ComponentProps<'div'> {}
 
