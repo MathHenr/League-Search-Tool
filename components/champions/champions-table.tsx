@@ -44,14 +44,14 @@ export const ChampionsTable = () => {
     }, [])
         
     return (
-        <div className="lg:min-h-screen flex flex-col lg:col-span-2 lg:row-span-2 p-3">
+        <div className="lg:min-h-screen flex flex-col lg:col-span-2 lg:row-span-2 p-3 border-r border-slate-100/25">
             <SectionTitle>
                 Champions
             </SectionTitle>
 
             <div className="w-full lg:min-h-[620px] h-full flex flex-col justify-between">
                 {/* champions icons */}
-                <div className="p-3 lg:grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 flex flex-row lg:gap-5 gap-x-3 overflow-hidden">
+                <div className="p-3 lg:grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 justify-items-center flex flex-row lg:gap-5 gap-x-3 overflow-hidden">
                     {isLoading && (
                         <div className="col-span-full min-h-[400px] grid items-center justify-center">
                             <Loader2

@@ -3,7 +3,7 @@
 const token = process.env.ACCESS_TOKEN
 const apiURL = "https://api.pandascore.co/lol"
 
-export type ChampionAtributes = {
+export type ChampionsInfo = {
     armor: number
     armorperlevel: number
     attackdamage: number
@@ -58,11 +58,45 @@ export type PlayerInfo = {
     slug: string
 }
 
-// picking 'id','name' and 'image_url' from list all champions 
-export type BasicChampionInfo = Pick<ChampionAtributes, 'id'|'name'|'image_url'>
+export type LeagueInfo = {
+    id: number,
+    image_url: string,
+    modified_at: Date,
+    name: string,
+    series: [
+        SerieInfo
+    ],
+    slug: string,
+    url: string,
+    videogame: {
+        current_version: number,
+        id: number,
+        name: string,
+        slug: string
+		}
+}
+
+export type SerieInfo = {
+    begin_at: Date,
+    end_at: Date,
+    full_name: string,
+    id: number,
+    league_id: number,
+    modified_at: Date,
+    name: string,
+    season: string,
+    slug: string,
+    winner_id: number,
+    winner_type: string,
+    year: number,
+    torunaments?: []
+}
+
+export type BasicChampionInfo = Pick<ChampionsInfo, 'id'|'name'|'image_url'>
 
 export type BasicPlayerInfo = Pick<PlayerInfo, 'id'|'image_url'|'first_name'|'name'|'last_name'|'role'>
 
+export type BasicLeagueInfo = Pick<LeagueInfo, 'id'| 'image_url'|'name'>
 
 export const fetchChampionsData = async (
     query: string | string[]
@@ -136,6 +170,31 @@ const fetchLeaguesData = async (
     }
 }
 
+// Getting only the main leagues
+export const getListLeagues = async () => {
+    const url = `${apiURL}/leagues?filter[id]=302,293,294,4197,4198,4199,4141,4288,2092`
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            }
+        })
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.status} error on ${response.statusText}`)
+        }
+
+        const data: [LeagueInfo] = await response.json()
+        const parsedData = simplifyLeagueJson(data)
+        return parsedData
+    } catch (error) {
+        throw new Error(`Error: ${error}`)
+    }
+}
+
+// Getting list of only league tier S players
 export const getListPlayers = async (): Promise<BasicPlayerInfo[]> => {
     // getting only tier S team players
     const url = `${apiURL}/players?filter[team_id]=126061,2882,2883,1566,129972,88`
@@ -153,9 +212,9 @@ export const getListPlayers = async (): Promise<BasicPlayerInfo[]> => {
             throw new Error(`Failed to fetch: ${response.status} error on ${response.statusText}`)
         }
         
-        const fullData: [PlayerInfo] = await response.json()
-        const data = simplifyProJson(fullData)
-        return data
+        const data: [PlayerInfo] = await response.json()
+        const parsedData = simplifyProJson(data)
+        return parsedData
     } catch (error) {
         throw new Error(`Error: ${error}`)
     }
@@ -177,12 +236,27 @@ export const getListChampions = async (page:number): Promise<BasicChampionInfo[]
             throw new Error(`Failed to fetch: ${response.status} error on ${response.statusText}`)
         }
 
-        const fullData: [ChampionAtributes] = await response.json()
-        const data = simplifyChampionJson(fullData)
-        return data
+        const data: [ChampionsInfo] = await response.json()
+        const parsedData = simplifyChampionJson(data)
+        return parsedData
     } catch (error) {
         throw new Error(`Error: ${error}`)
     }
+}
+
+const simplifyLeagueJson = (data: LeagueInfo[]): BasicLeagueInfo[] => {
+    const jsonSimplify: BasicLeagueInfo[] = []
+    for (let i = 0; i < data.length ; i++) {
+        const id = data[i].id
+        const name = data[i].name
+        const image_url = data[i].image_url
+        jsonSimplify.push({
+            id,
+            name,
+            image_url,
+        })
+    }
+    return jsonSimplify
 }
 
 const simplifyProJson = (data: PlayerInfo[]): BasicPlayerInfo[] => {
@@ -206,7 +280,7 @@ const simplifyProJson = (data: PlayerInfo[]): BasicPlayerInfo[] => {
     return jsonSimplify
 }
 
-const simplifyChampionJson = (data: [ChampionAtributes]): BasicChampionInfo[] => {
+const simplifyChampionJson = (data: [ChampionsInfo]): BasicChampionInfo[] => {
     const jsonSimplify: BasicChampionInfo[] = []
     for (let i = 0; i < data.length ; i++) {
         const id = data[i].id

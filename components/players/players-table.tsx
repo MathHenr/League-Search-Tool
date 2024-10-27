@@ -34,13 +34,13 @@ export const PlayersTable = () => {
     }, [])
     
     return (
-        <div className="lg:col-span-1 lg:row-span-1 max-h-[480px] flex flex-col bg-slate-700/45 p-3">
+        <div className="lg:col-span-1 lg:row-span-1 max-h-[480px] flex flex-col p-3">
             <SectionTitle>
                 Pros
             </SectionTitle>
 
-            <div className="w-full flex flex-col items-center justify-center">
-                <div className="p-2 lg:grid 2xl:grid-cols-4 lg:grid-cols-3 flex flex-row lg:gap-3 gap-x-3 overflow-hidden">
+            <div className="w-full flex flex-col">
+                <div className="p-2 lg:grid grid-cols-3 flex flex-row lg:gap-3 gap-x-3 overflow-hidden">
                     {isLoading && (
                         <div className="col-span-full min-h-[400px] grid items-center justify-center">
                             <Loader2

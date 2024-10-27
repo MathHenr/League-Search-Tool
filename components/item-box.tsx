@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react"
+
 import Image from "next/image"
 import Link from "next/link"
 
@@ -9,7 +11,7 @@ import {
     TooltipContent
 } from "@/components/ui/tooltip"
 
-interface ChampionsBoxProps {
+interface ItemBoxProps {
     id: number
     name: string
     image_url: string
@@ -29,8 +31,7 @@ export const ItemBox = ({
     last_name,
     role,
     path
-}: ChampionsBoxProps) => {
-    
+}: ItemBoxProps) => {
     return (
         <TooltipProvider
             key={id}
@@ -39,7 +40,7 @@ export const ItemBox = ({
                 <TooltipTrigger asChild>
                     <Link href={`${path}/${id}`}>
                         <div 
-                            className={cn("lg:w-32 min-w-20 lg:h-full h-1/2 p-2 flex flex-col items-center justify-center bg-[#312e35] shadow-sm hover:cursor-pointer hover:scale-110 ease-out transition-transform duration-100",
+                            className={cn("lg:w-32 w-24 max-w-[100px] h-full p-2 flex flex-col items-center justify-center bg-[#312e35] shadow-sm hover:cursor-pointer hover:scale-110 ease-out transition-transform duration-100",
                                 fadeIn ? "translate-x-2 opacity-0" : "translate-x-0 opacity-1",
                             )}
                         >
