@@ -14,21 +14,30 @@ interface ChampionsBoxProps {
     name: string
     image_url: string
     fadeIn: boolean
+    first_name?: string
+    last_name?: string
+    role?: string
+    path: string
 }
 
-export const ChampionsBox = ({
+export const ItemBox = ({
     id, 
     image_url, 
     name, 
-    fadeIn 
+    fadeIn,
+    first_name,
+    last_name,
+    role,
+    path
 }: ChampionsBoxProps) => {
+    
     return (
         <TooltipProvider
             key={id}
         >
             <Tooltip>
                 <TooltipTrigger asChild>
-                    <Link href={`/champion/${id}`}>
+                    <Link href={`${path}/${id}`}>
                         <div 
                             className={cn("lg:w-32 min-w-20 lg:h-full h-1/2 p-2 flex flex-col items-center justify-center bg-[#312e35] shadow-sm hover:cursor-pointer hover:scale-110 ease-out transition-transform duration-100",
                                 fadeIn ? "translate-x-2 opacity-0" : "translate-x-0 opacity-1",

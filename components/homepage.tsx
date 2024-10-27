@@ -1,4 +1,8 @@
+"use client"
+
 import { ChampionsTable } from "@/components/champions/champions-table"
+import { PlayersTable } from "@/components/players/players-table"
+import { LeaguesTable } from "@/components/leagues/leagues-table"
 
 const HomePage = () => {
     return (
@@ -6,13 +10,9 @@ const HomePage = () => {
             {/* champions content */}
             <ChampionsTable />
             {/* players content */}
-            <div className="lg:col-span-1 lg:row-span-1 bg-red-300/30">
-                <p>Players section</p>
-            </div>
+            <PlayersTable />
             {/* league content */}
-            <div className="lg:col-span-1 lg:row-span-1 bg-green-300/30">
-                <p>Leagues section</p>
-            </div>
+            <LeaguesTable />
         </section>
     )
 }

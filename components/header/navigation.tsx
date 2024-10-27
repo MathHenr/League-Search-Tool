@@ -35,8 +35,8 @@ const routes = [
         label: "Teams",
     },
     {
-        href: "/tournaments",
-        label: "Tournaments",
+        href: "/leagues",
+        label: "Leagues",
     },
 ]
 
