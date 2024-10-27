@@ -1,3 +1,4 @@
+import Footer from "@/components/footer"
 import Header from "@/components/header/header"
 import { SearchBar } from "@/components/search-bar"
 
@@ -12,6 +13,7 @@ const HomepageLayout = ({ children }: Props) => {
                 <Header />
                 <SearchBar />
                 {children}
+                <Footer />
             </main>
         </>
     )
